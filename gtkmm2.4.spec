@@ -1,4 +1,4 @@
-%define version 2.11.6
+%define version 2.11.7
 %define release %mkrel 1
 
 %define glibmm_version 2.12.3
@@ -9,6 +9,8 @@
 %define major 1
 %define libname_orig %mklibname %{pkgname} %{api_version}
 %define libname %mklibname %{pkgname} %{api_version} %{major}
+%define libnamedev %mklibname -d %{pkgname} %{api_version}
+%define libnamestaticdev %mklibname -d -s %{pkgname} %{api_version}
 
 Name:		%{pkgname}%{api_version}
 Summary:	C++ interface for popular GUI library gtk+
@@ -47,7 +49,7 @@ This package contains the library needed to run programs dynamically
 linked with %{pkgname}.
 
 
-%package	-n %{libname}-devel
+%package	-n %{libnamedev}
 Summary:	Headers and development files of %{pkgname}
 Group:		Development/GNOME and GTK+
 Requires:	%{libname} = %{version}
@@ -55,19 +57,21 @@ Provides:	%{pkgname}%{api_version}-devel = %{version}-%{release}
 Provides:	%{libname_orig}-devel = %{version}-%{release}
 Requires:	gtk+2-devel >= %{gtk_version}
 Requires:	glibmm2.4-devel >= %{glibmm_version}
+Obsoletes: %mklibname -d %{pkgname} %{api_version} %{major}
 
-%description	-n %{libname}-devel
+%description	-n %{libnamedev}
 This package contains the headers and development files that are needed,
 when trying to develop or compile applications which need %{pkgname}.
 
 
-%package	-n %{libname}-static-devel
+%package	-n %{libnamestaticdev}
 Summary:	Static libraries of %{pkgname}
 Group:		Development/GNOME and GTK+
-Requires:	%{libname}-devel = %{version}
+Requires:	%{libnamedev} = %{version}
 Provides:	%{libname_orig}-static-devel = %{version}-%{release}
+Obsoletes: %mklibname -d -s %{pkgname} %{api_version} %{major}
 
-%description	-n %{libname}-static-devel
+%description	-n %{libnamestaticdev}
 This package contains the static libraries of %{pkgname}.
 
 
@@ -107,9 +111,13 @@ rm -rf %{buildroot}
 %files -n %{libname}
 %defattr(-, root, root)
 %doc AUTHORS COPYING NEWS README
-%{_libdir}/*.so.*
+%{_libdir}/libatkmm-1.6.so.%{major}*
+%{_libdir}/libgdkmm-%{api_version}.so.%{major}*
+%{_libdir}/libgtkmm-%{api_version}.so.%{major}*
+%{_libdir}/libpangomm-1.4.so.%{major}*
 
-%files -n %{libname}-devel
+
+%files -n %{libnamedev}
 %defattr(-, root, root)
 %doc CHANGES COPYING PORTING ChangeLog
 %_bindir/%name-demo
@@ -120,7 +128,7 @@ rm -rf %{buildroot}
 %{_libdir}/gdkmm-%{api_version}
 %{_libdir}/pkgconfig/*.pc
 
-%files -n %{libname}-static-devel
+%files -n %{libnamestaticdev}
 %defattr(-, root, root)
 %doc COPYING
 %{_libdir}/*.a
