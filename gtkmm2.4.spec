@@ -1,5 +1,5 @@
-%define version 2.12.4
-%define release %mkrel 2
+%define version 2.12.5
+%define release %mkrel 1
 
 %define glibmm_version 2.14.1
 %define gtk_version 2.12.0
@@ -100,7 +100,6 @@ this documentation with devhelp, a documentation reader.
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-mv %buildroot%_bindir/demo %buildroot%_bindir/%name-demo
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -120,13 +119,14 @@ rm -rf %{buildroot}
 %files -n %{libnamedev}
 %defattr(-, root, root)
 %doc CHANGES COPYING PORTING ChangeLog
-%_bindir/%name-demo
+%_bindir/gtkmm-demo
 %{_includedir}/*
 %{_libdir}/*.la
 %{_libdir}/*.so
 %{_libdir}/gtkmm-%{api_version}
 %{_libdir}/gdkmm-%{api_version}
 %{_libdir}/pkgconfig/*.pc
+%_datadir/gtkmm-%{api_version}
 
 %files -n %{libnamestaticdev}
 %defattr(-, root, root)
