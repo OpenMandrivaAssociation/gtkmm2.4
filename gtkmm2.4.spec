@@ -1,8 +1,8 @@
-%define version 2.12.7
+%define version 2.13.1
 %define release %mkrel 2
 
 %define glibmm_version 2.14.1
-%define gtk_version 2.12.0
+%define gtk_version 2.13.0
 
 %define pkgname	gtkmm
 %define api_version 2.4
@@ -16,7 +16,7 @@ Name:		%{pkgname}%{api_version}
 Summary:	C++ interface for popular GUI library gtk+
 Version:	%{version}
 Release:	%{release}
-License:	LGPL
+License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://gtkmm.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
