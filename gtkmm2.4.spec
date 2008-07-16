@@ -1,8 +1,8 @@
-%define version 2.13.1
-%define release %mkrel 2
+%define version 2.13.4
+%define release %mkrel 1
 
 %define glibmm_version 2.14.1
-%define gtk_version 2.13.0
+%define gtk_version 2.13.4
 
 %define pkgname	gtkmm
 %define api_version 2.4
@@ -24,7 +24,7 @@ Source:		http://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}
 BuildRequires:	gtk+2-devel >= %{gtk_version}
 BuildRequires:	glibmm2.4-devel >= %{glibmm_version}
 BuildRequires:	atk-devel >= 1.9.0
-BuildRequires:	cairomm-devel  >= 1.1.12
+BuildRequires:	cairomm-devel  >= 1.2.2
 
 %description
 Gtkmm provides a C++ interface to the GTK+ GUI library. Gtkmm2 wraps GTK+ 2.
