@@ -1,7 +1,8 @@
-%define version 2.13.4
+%define version 2.13.5
 %define release %mkrel 1
 
-%define glibmm_version 2.14.1
+%define glibmm_version 2.16.0
+%define pangomm_version 2.13.5
 %define gtk_version 2.13.4
 
 %define pkgname	gtkmm
@@ -25,6 +26,7 @@ BuildRequires:	gtk+2-devel >= %{gtk_version}
 BuildRequires:	glibmm2.4-devel >= %{glibmm_version}
 BuildRequires:	atk-devel >= 1.9.0
 BuildRequires:	cairomm-devel  >= 1.2.2
+BuildRequires:	pangomm2.4-devel >= %pangomm_version
 
 %description
 Gtkmm provides a C++ interface to the GTK+ GUI library. Gtkmm2 wraps GTK+ 2.
@@ -117,7 +119,6 @@ rm -rf %{buildroot}
 %{_libdir}/libatkmm-1.6.so.%{major}*
 %{_libdir}/libgdkmm-%{api_version}.so.%{major}*
 %{_libdir}/libgtkmm-%{api_version}.so.%{major}*
-%{_libdir}/libpangomm-1.4.so.%{major}*
 
 
 %files -n %{libnamedev}
