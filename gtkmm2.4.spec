@@ -1,5 +1,5 @@
 %define version 2.13.7
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define glibmm_version 2.16.0
 %define pangomm_version 2.13.5
@@ -22,6 +22,10 @@ Group:		System/Libraries
 URL:		http://gtkmm.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source:		http://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.bz2
+#gw fix build with gtk 2.14.1
+# https://qa.mandriva.com/show_bug.cgi?id=43623
+# http://bugzilla.gnome.org/show_bug.cgi?id=461227
+Patch: gtkmm-2.13.7-compile-with-gtk0214.patch
 BuildRequires:	gtk+2-devel >= %{gtk_version}
 BuildRequires:	glibmm2.4-devel >= %{glibmm_version}
 BuildRequires:	atk-devel >= 1.9.0
@@ -92,6 +96,15 @@ this documentation with devhelp, a documentation reader.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
+%patch -p0
+#gw needed by the patch:
+rm -f gtk/gtkmm/widget.* gtk/gtkmm/selectiondata.*
+( cd gtk/src
+  for f in widget selectiondata ; do
+    `pkg-config --variable=gmmprocdir glibmm-2.4`/gmmproc \
+      -I ../../tools/m4 --defs . $f . ../gtkmm || exit 1
+  done
+)
 
 %build
 %configure2_5x --enable-static --enable-shared
