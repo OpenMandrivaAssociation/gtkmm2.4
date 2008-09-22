@@ -1,8 +1,8 @@
-%define version 2.13.8
+%define version 2.14.0
 %define release %mkrel 1
 
 %define glibmm_version 2.16.0
-%define pangomm_version 2.13.5
+%define pangomm_version 2.14.0
 %define gtk_version 2.13.4
 
 %define pkgname	gtkmm
