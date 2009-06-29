@@ -3,7 +3,7 @@
 
 %define glibmm_version 2.18.0
 %define pangomm_version 2.14.0
-%define gtk_version 2.14.0
+%define gtk_version 2.15.5
 
 %define pkgname	gtkmm
 %define api_version 2.4
