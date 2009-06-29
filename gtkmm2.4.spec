@@ -1,4 +1,4 @@
-%define version 2.16.0
+%define version 2.17.1
 %define release %mkrel 1
 
 %define glibmm_version 2.18.0
@@ -23,7 +23,6 @@ Group:		System/Libraries
 URL:		http://gtkmm.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source:		http://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.bz2
-Patch: gtkmm-2.15.0-format-strings.patch
 BuildRequires:	gtk+2-devel >= %{gtk_version}
 BuildRequires:	glibmm2.4-devel >= %{glibmm_version}
 BuildRequires:	atk-devel >= 1.9.0
@@ -94,7 +93,6 @@ this documentation with devhelp, a documentation reader.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
-%patch -p1
 
 %build
 %configure2_5x --enable-static --enable-shared
