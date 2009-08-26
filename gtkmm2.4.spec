@@ -1,8 +1,8 @@
-%define version 2.17.2
+%define version 2.17.9
 %define release %mkrel 1
 
-%define glibmm_version 2.18.0
-%define pangomm_version 2.14.0
+%define glibmm_version 2.21.4
+%define pangomm_version 2.25.1
 %define gtk_version 2.15.5
 
 %define pkgname	gtkmm
@@ -125,7 +125,6 @@ rm -rf %{buildroot}
 %files -n %{libnamedev}
 %defattr(-, root, root)
 %doc CHANGES COPYING PORTING ChangeLog
-%_bindir/gtkmm-demo
 %{_includedir}/*
 %{_libdir}/*.la
 %{_libdir}/*.so
