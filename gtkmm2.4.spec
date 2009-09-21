@@ -1,4 +1,4 @@
-%define version 2.17.11
+%define version 2.18.1
 %define release %mkrel 1
 
 %define glibmm_version 2.21.4
@@ -124,7 +124,7 @@ rm -rf %{buildroot}
 
 %files -n %{libnamedev}
 %defattr(-, root, root)
-%doc CHANGES COPYING PORTING ChangeLog
+%doc PORTING ChangeLog
 %{_includedir}/*
 %{_libdir}/*.la
 %{_libdir}/*.so
