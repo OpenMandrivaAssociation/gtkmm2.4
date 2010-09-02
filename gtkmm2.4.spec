@@ -1,4 +1,4 @@
-%define version 2.20.3
+%define version 2.21.7
 %define release %mkrel 1
 
 %define glibmm_version 2.24.0
@@ -25,7 +25,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source:		http://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.bz2
 BuildRequires:	gtk+2-devel >= %{gtk_version}
 BuildRequires:	glibmm2.4-devel >= %{glibmm_version}
-BuildRequires:	atk-devel >= 1.9.0
+BuildRequires:  atkmm1.6-devel >= 2.21.1
 BuildRequires:	cairomm-devel  >= 1.2.2
 BuildRequires:	pangomm2.4-devel >= %pangomm_version
 
@@ -104,12 +104,6 @@ this documentation with devhelp, a documentation reader.
 rm -rf %{buildroot}
 %makeinstall_std
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
 
 %clean
 rm -rf %{buildroot}
@@ -117,7 +111,6 @@ rm -rf %{buildroot}
 %files -n %{libname}
 %defattr(-, root, root)
 %doc AUTHORS COPYING NEWS README
-%{_libdir}/libatkmm-1.6.so.%{major}*
 %{_libdir}/libgdkmm-%{api_version}.so.%{major}*
 %{_libdir}/libgtkmm-%{api_version}.so.%{major}*
 
@@ -131,7 +124,6 @@ rm -rf %{buildroot}
 %{_libdir}/gtkmm-%{api_version}
 %{_libdir}/gdkmm-%{api_version}
 %{_libdir}/pkgconfig/*.pc
-%_datadir/gtkmm-%{api_version}
 
 %files -n %{libnamestaticdev}
 %defattr(-, root, root)
