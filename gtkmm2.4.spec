@@ -1,4 +1,4 @@
-%define version 2.21.8
+%define version 2.21.8.1
 %define release %mkrel 1
 
 %define glibmm_version 2.24.0
