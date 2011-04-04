@@ -1,9 +1,9 @@
-%define version 2.22.0
-%define release %mkrel 2
+%define version 2.24.0
+%define release %mkrel 1
 
 %define glibmm_version 2.24.0
 %define pangomm_version 2.25.1
-%define gtk_version 2.21.8
+%define gtk_version 2.24.0
 
 %define pkgname	gtkmm
 %define api_version 2.4
@@ -102,7 +102,7 @@ this documentation with devhelp, a documentation reader.
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std
+%makeinstall_std MMDOCTOOLDIR=%_datadir/mm-common/doctool
 
 
 %clean
