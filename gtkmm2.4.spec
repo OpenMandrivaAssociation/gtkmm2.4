@@ -1,5 +1,5 @@
-%define version 2.24.0
-%define release %mkrel 2
+%define version 2.24.2
+%define release %mkrel 1
 
 %define glibmm_version 2.24.0
 %define pangomm_version 2.25.1
@@ -22,7 +22,7 @@ License:	LGPLv2+ and GPLv2+
 Group:		System/Libraries
 URL:		http://gtkmm.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Source:		http://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.bz2
+Source:		http://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.xz
 BuildRequires:	gtk+2-devel >= %{gtk_version}
 BuildRequires:	glibmm2.4-devel >= %{glibmm_version}
 BuildRequires:  atkmm1.6-devel >= 2.21.1
