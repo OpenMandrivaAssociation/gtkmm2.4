@@ -48,7 +48,7 @@ Summary:	Headers and development files of %{pkgname}
 Group:		Development/GNOME and GTK+
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{pkgname}%{api_version}-devel = %{version}-%{release}
-Provides:	%{libname_orig}-devel = %{version}-%{release}
+Provides:	lib%{name}-devel = %{version}-%{release}
 Obsoletes:	%mklibname -d %{pkgname} %{api_version} %{major}
 
 %description	-n %{libnamedev}
