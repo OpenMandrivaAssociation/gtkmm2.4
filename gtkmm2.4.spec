@@ -21,13 +21,13 @@ Release:	%{release}
 License:	LGPLv2+ and GPLv2+
 Group:		System/Libraries
 URL:		http://gtkmm.sourceforge.net/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+
 Source:		http://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.xz
 BuildRequires:	gtk+2-devel >= %{gtk_version}
 BuildRequires:	glibmm2.4-devel >= %{glibmm_version}
 BuildRequires:  atkmm1.6-devel >= 2.21.1
 BuildRequires:	cairomm-devel  >= 1.2.2
-BuildRequires:	pangomm2.4-devel >= %pangomm_version
+BuildRequires:	pangomm2.4-devel >= %{pangomm_version}
 
 %description
 Gtkmm provides a C++ interface to the GTK+ GUI library. Gtkmm2 wraps GTK+ 2.
@@ -95,44 +95,33 @@ this documentation with devhelp, a documentation reader.
 %setup -q -n %{pkgname}-%{version}
 
 %build
-%configure2_5x --enable-static --enable-shared
+%configure2_5x \
+    --enable-static \
+    --enable-shared \
+    --disable-static
 %make
 
 # make check does nothing
 
 %install
 rm -rf %{buildroot}
-%makeinstall_std MMDOCTOOLDIR=%_datadir/mm-common/doctool
+%makeinstall_std MMDOCTOOLDIR=%{_datadir}/mm-common/doctool
 
-
-%clean
-rm -rf %{buildroot}
+find %{buildroot} -name \*.la|xargs rm -f
 
 %files -n %{libname}
-%defattr(-, root, root)
-%doc AUTHORS COPYING NEWS README
 %{_libdir}/libgdkmm-%{api_version}.so.%{major}*
 %{_libdir}/libgtkmm-%{api_version}.so.%{major}*
 
 
 %files -n %{libnamedev}
-%defattr(-, root, root)
-%doc PORTING ChangeLog
+%doc PORTING ChangeLog AUTHORS COPYING NEWS README
 %{_includedir}/*
-%{_libdir}/*.la
 %{_libdir}/*.so
-%{_libdir}/gtkmm-%{api_version}
-%{_libdir}/gdkmm-%{api_version}
+%{_libdir}/gtkmm-%{api_version}/
+%{_libdir}/gdkmm-%{api_version}/
 %{_libdir}/pkgconfig/*.pc
 
-%files -n %{libnamestaticdev}
-%defattr(-, root, root)
-%doc COPYING
-%{_libdir}/*.a
-
 %files doc
-%defattr(-, root, root)
-%doc %{_datadir}/doc/gtkmm-%{api_version}
+%doc %{_datadir}/doc/gtkmm-%{api_version}/
 %doc %{_datadir}/devhelp/books/*
-
-
