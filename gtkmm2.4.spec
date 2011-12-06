@@ -1,33 +1,24 @@
-%define version 2.24.2
-%define release %mkrel 3
-
-%define glibmm_version 2.24.0
-%define pangomm_version 2.25.1
-%define gtk_version 2.24.0
-
 %define pkgname	gtkmm
 %define api_version 2.4
 %define major 1
-%define libname_orig %mklibname %{pkgname} %{api_version}
 %define libname %mklibname %{pkgname} %{api_version} %{major}
 %define libnamedev %mklibname -d %{pkgname} %{api_version}
-%define libnamestaticdev %mklibname -d -s %{pkgname} %{api_version}
 
 Name:		%{pkgname}%{api_version}
 Summary:	C++ interface for popular GUI library gtk+
-Version:	%{version}
-Release:	%{release}
+Version:	2.24.2
+Release:	4
 #gw lib is LGPL, tool is GPL
 License:	LGPLv2+ and GPLv2+
 Group:		System/Libraries
 URL:		http://gtkmm.sourceforge.net/
 
 Source:		http://ftp.gnome.org/pub/GNOME/sources/%{pkgname}/%{pkgname}-%{version}.tar.xz
-BuildRequires:	gtk+2-devel >= %{gtk_version}
-BuildRequires:	glibmm2.4-devel >= %{glibmm_version}
-BuildRequires:  atkmm1.6-devel >= 2.21.1
-BuildRequires:	cairomm-devel  >= 1.2.2
-BuildRequires:	pangomm2.4-devel >= %{pangomm_version}
+BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(glibmm-2.4)
+BuildRequires:	pkgconfig(atkmm-1.6)
+BuildRequires:	pkgconfig(cairomm-1.0)
+BuildRequires:	pkgconfig(pangomm-1.4)
 
 %description
 Gtkmm provides a C++ interface to the GTK+ GUI library. Gtkmm2 wraps GTK+ 2.
@@ -39,7 +30,7 @@ quickly create complex user interfaces.
 %package	-n %{libname}
 Summary:	C++ interface for popular GUI library gtk+
 Group:		System/Libraries
-Provides:	%{libname_orig} = %{version}-%{release}
+Provides:	lib%{name} = %{version}-%{release}
 Provides:	%{pkgname}%{api_version} = %{version}-%{release}
 
 %description	-n %{libname}
@@ -55,27 +46,14 @@ linked with %{pkgname}.
 %package	-n %{libnamedev}
 Summary:	Headers and development files of %{pkgname}
 Group:		Development/GNOME and GTK+
-Requires:	%{libname} = %{version}
+Requires:	%{libname} = %{version}-%{release}
 Provides:	%{pkgname}%{api_version}-devel = %{version}-%{release}
 Provides:	%{libname_orig}-devel = %{version}-%{release}
-Requires:	gtk+2-devel >= %{gtk_version}
-Requires:	glibmm2.4-devel >= %{glibmm_version}
-Obsoletes: %mklibname -d %{pkgname} %{api_version} %{major}
+Obsoletes:	%mklibname -d %{pkgname} %{api_version} %{major}
 
 %description	-n %{libnamedev}
 This package contains the headers and development files that are needed,
 when trying to develop or compile applications which need %{pkgname}.
-
-
-%package	-n %{libnamestaticdev}
-Summary:	Static libraries of %{pkgname}
-Group:		Development/GNOME and GTK+
-Requires:	%{libnamedev} = %{version}
-Provides:	%{libname_orig}-static-devel = %{version}-%{release}
-Obsoletes: %mklibname -d -s %{pkgname} %{api_version} %{major}
-
-%description	-n %{libnamestaticdev}
-This package contains the static libraries of %{pkgname}.
 
 
 %package	doc
