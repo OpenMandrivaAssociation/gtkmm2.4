@@ -4,6 +4,7 @@
 %define api	2.4
 %define major	1
 %define libname	%mklibname %{pkgname} %{api} %{major}
+%define libgdkmm %mklibname gdkmm %{api} %{major}
 %define devname	%mklibname -d %{pkgname} %{api}
 
 Summary:	C++ interface for popular GUI library gtk+
