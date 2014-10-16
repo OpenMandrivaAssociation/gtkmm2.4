@@ -1,2 +1,4 @@
+removed_sources:
+  gtkmm-2.24.2.tar.xz: d26fb3d9f483ae0c608bac49e6236274f83aed59
 sources:
-  "gtkmm-2.24.2.tar.xz": d26fb3d9f483ae0c608bac49e6236274f83aed59
+  gtkmm-2.24.4.tar.xz: e99866b0cb5a0d7387a7cef79253177310020b3d

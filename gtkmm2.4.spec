@@ -9,8 +9,8 @@
 
 Summary:	C++ interface for popular GUI library gtk+
 Name:		%{pkgname}%{api}
-Version:	2.24.2
-Release:	14
+Version:	2.24.4
+Release:	1
 #gw lib is LGPL, tool is GPL
 License:	LGPLv2+ and GPLv2+
 Group:		System/Libraries
@@ -69,9 +69,8 @@ when trying to develop or compile applications which need %{pkgname}.
 %setup -qn %{pkgname}-%{version}
 
 %build
-%configure2_5x \
-	--enable-shared \
-	--disable-static
+%configure \
+	--enable-shared
 
 %make
 # make check does nothing
