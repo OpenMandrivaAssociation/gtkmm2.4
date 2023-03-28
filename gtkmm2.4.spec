@@ -10,7 +10,7 @@
 Summary:	C++ interface for popular GUI library gtk+
 Name:		%{pkgname}%{api}
 Version:	2.24.5
-Release:	7
+Release:	8
 #gw lib is LGPL, tool is GPL
 License:	LGPLv2+ and GPLv2+
 Group:		System/Libraries
