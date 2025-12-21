@@ -17,6 +17,11 @@ Group:		System/Libraries
 Url:		https://gtkmm.sourceforge.net/
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/gtkmm/%{url_ver}/%{pkgname}-%{version}.tar.xz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(glibmm-2.4)
 BuildRequires:	pkgconfig(atkmm-1.6)
